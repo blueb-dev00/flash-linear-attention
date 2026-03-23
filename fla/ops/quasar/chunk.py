@@ -1,6 +1,3 @@
-# Copyright (c) 2023-2025, Songlin Yang, Yu Zhang
-# Modified for QuasarAttention
-
 import torch
 import torch.nn.functional as F
 import triton
@@ -12,7 +9,7 @@ from fla.utils import IS_AMD, autocast_custom_bwd, autocast_custom_fwd, autotune
 
 BS_LIST = [32, 64] if check_shared_mem() else [16, 32]
 BT_LIST_AUTOTUNE = [32, 64, 128]
-NUM_WARPS_AUTOTUNE = [2, 4, 8, 16, 32] if IS_AMD else [4, 8, 16, 32]
+NUM_WARPS_AUTOTUNE = [2, 4, 8, 16] if IS_AMD else [4, 8, 16, 32]
 
 
 @input_guard
